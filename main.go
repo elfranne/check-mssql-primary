@@ -19,9 +19,6 @@ func main() {
 	)
 
 	fmt.Println("FOO:", os.Getenv("HAPROXY_SERVER_ADDR"))
-	
-
-
 
 	dsn := "server=" + *server + ";user id=" + *userid + ";password=" + *password + ";database=" + *database
 	db, err := sql.Open("mssql", dsn)
