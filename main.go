@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"net"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -22,6 +23,11 @@ func main() {
 		database = os.Getenv("MSSQL_DATABASE")      // from .env
 		server   = os.Getenv("HAPROXY_SERVER_ADDR") // from Haproxy
 	)
+
+	if net.ParseIP(server) == nil {
+		fmt.Println("Invalid IP from Haproxy: ")
+		os.Exit(1)
+	}
 
 	dsn := "server=" + server + ";user id=" + username + ";password=" + password + ";database=" + database
 	db, err := sql.Open("mssql", dsn)
