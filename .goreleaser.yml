@@ -2,9 +2,9 @@ builds:
   # List of builds
   - # First Build
     env:
-    - CGO_ENABLED=0
+      - CGO_ENABLED=0
     main: .
-    ldflags: '-s -w -X github.com/elfranne/check-mssql-primary/version.version={{.Version}} -X github.com/elfranne/check-mssql-primary/version.commit={{.Commit}} -X github.com/elfranne/check-mssql-primary/version.date={{.Date}}'
+    ldflags: "-s -w -X github.com/elfranne/check-mssql-primary/version.version={{.Version}} -X github.com/elfranne/check-mssql-primary/version.commit={{.Commit}} -X github.com/elfranne/check-mssql-primary/version.date={{.Date}}"
     # Set the binary output location to bin/ so archive will comply with Sensu Go Asset structure
     goos:
       - linux
@@ -13,16 +13,15 @@ builds:
       - arm
       - arm64
     goarm:
-      - '5'
-      - '6'
-      - '7'
+      - "5"
+      - "6"
+      - "7"
     targets:
       - linux_amd64
       - linux_arm_5
       - linux_arm_6
       - linux_arm_7
       - linux_arm64
-
 
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_sha512-checksums.txt"
@@ -31,5 +30,3 @@ checksum:
 archives:
   - id: tar
     format: tar.gz
-
-
