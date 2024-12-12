@@ -1,11 +1,14 @@
 # check-mssql-primary
 
-How do you give informations about the MSSQL primary replica to haproxy?
+`check-mssql-primary` is an [external-check][1] for Haproxy. Is will query [MSSQL][2] nodes to find out if it is the primary replica.
 
-`external-check` is here to help, where you can define a command to run to check the health state, that we can abuse to tell haproxy which server is the primary replica.
+Please create a check-mssql-primary.env at the same location as the binary:
 
-Haproxy does send usefull info as args and environment variables
+```env
+MSSQL_USERNAME=
+MSSQL_PASSWORD=
+MSSQL_DATABASE=
+```
 
-https://docs.haproxy.org/3.0/configuration.html#external-check%20command
-https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-use-utility
-https://learn.microsoft.com/en-us/sql/relational-databases/system-functions/sys-fn-hadr-is-primary-replica-transact-sql?view=sql-server-ver16
+[1]: https://docs.haproxy.org/3.0/configuration.html#external-check%20command
+[2]: https://learn.microsoft.com/en-us/sql/relational-databases/system-functions/sys-fn-hadr-is-primary-replica-transact-sql?view=sql-server-ver16
