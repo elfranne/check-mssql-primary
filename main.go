@@ -11,9 +11,16 @@ import (
 )
 
 func main() {
-	err := godotenv.Load("check-mssql-primary.env")
+	pwd, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Failed to get current working directory ", err.Error())
+		os.Exit(1)
+	}
+
+	err = godotenv.Load(pwd + "check-mssql-primary.env")
 	if err != nil {
 		fmt.Println("Error loading check-mssql-primary.env file: ", err.Error())
+		os.Exit(1)
 	}
 
 	var (
