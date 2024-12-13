@@ -3,7 +3,6 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"net"
 	"os"
 
@@ -14,7 +13,7 @@ import (
 func main() {
 	err := godotenv.Load("check-mssql-primary.env")
 	if err != nil {
-		log.Fatal("Error loading check-mssql-primary.env file")
+		fmt.Println("Error loading check-mssql-primary.env file: ", err.Error())
 	}
 
 	var (
