@@ -41,7 +41,9 @@ func main() {
 		fmt.Println("Cannot connect: ", err.Error())
 		os.Exit(1)
 	}
-	defer db.Close()
+	defer func() {
+		_ = db.Close()
+	}()
 	err = db.Ping()
 	if err != nil {
 		fmt.Println("Cannot connect: ", err.Error())
@@ -53,6 +55,8 @@ func main() {
 		fmt.Println("Query failed: ", err.Error())
 		os.Exit(1)
 	}
-	defer rows.Close()
+	defer func() {
+		_ = rows.Close()
+	}()
 	fmt.Printf("server %s is primary", server)
 }
