@@ -1,10 +1,10 @@
 module github.com/elfranne/check-mssql-primary
 
-go 1.24.4
+go 1.25.3
 
 require (
 	github.com/joho/godotenv v1.5.1
-	github.com/microsoft/go-mssqldb v1.9.3
+	github.com/microsoft/go-mssqldb v1.9.4
 )
 
 require (

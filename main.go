@@ -42,8 +42,12 @@ func main() {
 		os.Exit(1)
 	}
 	defer func() {
-		_ = db.Close()
+		if err := db.Close(); err != nil {
+			// Optionally log the error
+			fmt.Fprintf(os.Stderr, "db.Close() error: %v\n", err)
+		}
 	}()
+
 	err = db.Ping()
 	if err != nil {
 		fmt.Println("Cannot connect: ", err.Error())
@@ -56,7 +60,10 @@ func main() {
 		os.Exit(1)
 	}
 	defer func() {
-		_ = rows.Close()
+		if err := rows.Close(); err != nil {
+			// Optionally log the error
+			fmt.Fprintf(os.Stderr, "rows.Close() error: %v\n", err)
+		}
 	}()
 	fmt.Printf("server %s is primary", server)
 }
