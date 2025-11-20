@@ -10,6 +10,8 @@ MSSQL_PASSWORD=
 MSSQL_DATABASE=
 ```
 
+For testing purposes, you can use `HAPROXY_SERVER_ADDR` in the `.env`.
+
 You'll need to modify the Haproxy a bit:
 
 ```conf
