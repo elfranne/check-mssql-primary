@@ -17,7 +17,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	err = godotenv.Load(pwd + "check-mssql-primary.env")
+	err = godotenv.Load(pwd + "/check-mssql-primary.env")
 	if err != nil {
 		fmt.Println("Error loading check-mssql-primary.env file: ", err.Error())
 		os.Exit(1)
@@ -65,5 +65,5 @@ func main() {
 			fmt.Fprintf(os.Stderr, "rows.Close() error: %v\n", err)
 		}
 	}()
-	fmt.Printf("server %s is primary", server)
+	fmt.Printf("server %s is primary\n", server)
 }
