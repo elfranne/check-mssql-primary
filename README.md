@@ -1,6 +1,6 @@
 # check-mssql-primary
 
-`check-mssql-primary` is an [external-check][1] for Haproxy. Is will query [MSSQL][2] nodes to find out if it is the primary replica.
+`check-mssql-primary` is an [external-check][1] for Haproxy. It will query [MSSQL][2] nodes to find out if it is the primary replica.
 
 You'll need to place the binary and a check-mssql-primary.env in the chroot jail (Debian default `/var/lib/haproxy`):
 
