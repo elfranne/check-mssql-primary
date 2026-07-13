@@ -65,5 +65,26 @@ func main() {
 			fmt.Fprintf(os.Stderr, "rows.Close() error: %v\n", err)
 		}
 	}()
+
+	if !rows.Next() {
+		fmt.Printf("server %s: no result from fn_hadr_is_primary_replica (not in an availability group?)\n", server)
+		os.Exit(1)
+	}
+
+	var isPrimary sql.NullInt64
+	if err := rows.Scan(&isPrimary); err != nil {
+		fmt.Println("Failed to read query result: ", err.Error())
+		os.Exit(1)
+	}
+	if err := rows.Err(); err != nil {
+		fmt.Println("Error iterating query result: ", err.Error())
+		os.Exit(1)
+	}
+
+	if !isPrimary.Valid || isPrimary.Int64 != 1 {
+		fmt.Printf("server %s is not primary\n", server)
+		os.Exit(1)
+	}
+
 	fmt.Printf("server %s is primary\n", server)
 }
