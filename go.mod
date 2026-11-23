@@ -4,7 +4,7 @@ go 1.26.5
 
 require (
 	github.com/joho/godotenv v1.5.1
-	github.com/microsoft/go-mssqldb v1.11.2
+	github.com/microsoft/go-mssqldb v1.12.0
 )
 
 require (
